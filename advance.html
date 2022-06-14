@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>advance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section>
+    <header>
+        <nav>
+            <a href="index.html">пошук</a>
+            <a href="image.html">картинка</a>
+            <a href="kupit_salo.html">купить сало</a>
+            <a href="advance.html">розширений</a>
+        </nav>
+    </header>
+    <main>
+        <a class="logo" href="https://google.com"><img src="Без%20названия.jpg" alt=""></a>
+        <div class="container">
+            <input data="all" placeholder="Введіть текст"/>
+            <input data="exact" placeholder="Введіть текст"/>
+            <input data="any" placeholder="Введіть текст"/>
+            <input data="none" placeholder="Введіть текст"/>
+            <button click="advance">Пошук</button>
+        </div>
+    </main>
+</section>
+<script>
+    document.querySelector('[click="advance"]').addEventListener('click', ()=>{
+    const all = document.querySelector('[data="all"]')
+    const exact = document.querySelector('[data="exact"]')
+    const any = document.querySelector('[data="any"]')
+    const none = document.querySelector('[data="none"]')
+    let endpoint = 'https://images.google.com/search?q='
+    let search = false
+    if (all.value !== ''){
+        endpoint = endpoint + all.value
+        search = true
+    }
+    if(exact.value !== ''){
+        endpoint = endpoint + ' '+  exact.value
+        search = true
+    }
+    if(any.value !== ''){
+        endpoint = endpoint + ' "' + any.value + '"'
+        search = true
+    }
+    if(none.value !== ''){
+        endpoint = endpoint + ' -' + none.value
+        search = true
+    }
+    if(search){
+        window.location = endpoint
+    }
+})</script>
+</body>
+</html>
